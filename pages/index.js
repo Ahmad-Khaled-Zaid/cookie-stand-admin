@@ -1,5 +1,15 @@
-import { CookieStandAdmin } from '../components'
+import { AuthContext } from '../contexts/auth-context';
+import { useContext } from 'react'
+import { CookieStandAdmin, Login } from '../components'
 
 export default function Home() {
-    return <CookieStandAdmin / >
+    const { tokens } = useContext(AuthContext);
+
+    return (
+        <>
+            {
+                tokens ? <CookieStandAdmin /> : <Login />
+            }
+        </>
+    )
 }
